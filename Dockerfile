@@ -1,4 +1,4 @@
-FROM node:alpine
+FROM datagovsg/python-node 
 
 ENV FIREBASE_SECRET=secret
 ENV FIREBASE_BASEDIR=/app/server
@@ -16,6 +16,6 @@ WORKDIR /app/server
 RUN echo "{}" > data.json
 COPY ./rules.json rules.json
 
-ENTRYPOINT firebase-server -a ${FIREBASE_ADDRESS} -p ${FIREBASE_PORT} -f ${FIREBASE_DATA_DIR}}} -r ${FIREBASE_RULES_DIR}}}
+ENTRYPOINT firebase-server -a ${FIREBASE_ADDRESS} -p ${FIREBASE_PORT} -f ${FIREBASE_DATA_DIR} -r ${FIREBASE_RULES_DIR}
 
 EXPOSE 5000
